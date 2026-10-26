@@ -1,1 +1,59 @@
-c
+Step-1: Create virtual env
+python -m venv kiet-env
+
+Step-2: Activate virtual env
+In Mac:
+source kiet-env/bin/activate
+
+In Windows:
+kiet-env\Scripts\activate
+
+Step-3: Create working directory and switch to that
+mkdir mlops-first-pipeline
+cd mlops-first-pipeline
+
+Step-4: Install required packages
+pip install -r requirements.txt
+
+Step-5: Implement a simple machine learning model
+Step-6: Train and Save the model
+python train.py
+
+Step-7: Implement FastAPI and create endpoints
+Step-8: Start the API
+uvicorn main:app --reload
+
+phase-2: virtualization with Docker
+
+why we need docker?
+ - imagine you are runing your code on your laptop with a different programming version and another user is working on a different version..
+
+Reason of failures:
+ -Using different programming version
+ -Using different version of libraries like scikit-learn, FastAPI
+ -Missing Python packages
+ -Different OS dependencies
+
+Docker helps package your application code, runtime, dependencies and startup 
+instructions into a standardized imagine
+
+4 major requirements:
+-Dockerfile -Set of instructions for packaging ML application
+-Image - packaged reusable application artifact
+-Container - A running instance of the image
+-Port Mapping -Makes the API inside the
+
+docker commands:
+docker phasecheck running containers
+
+docker ps -Acheck all active/non-active containers
+
+docker build -t mlops-iris-image-cs .
+-t = tag name = name of the image
+
+docker run -d -p 8000:8000 --name mlops-cs-container mlops-iris-image-cs
+
+Phase-3: Automated Testing and CI/CD with GitHUB actions
+
+Our goal:
+Whenever we push code on GithHub, the system should automatically run tests and build the Docker image. Late we will extend the same pipeline to publish the image and deploy it
